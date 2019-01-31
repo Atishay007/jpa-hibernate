@@ -35,9 +35,11 @@ public class CourseRepositoryTest {
 
 	@Test
 	// Spring will reset the deleted data.
+	// So that other methods can use the data.
 	@DirtiesContext
 	public void deleteById() {
-		Course course = courseBS.delete(1);
+		Course course = courseBS.deleteCourseById(1);
 		assertEquals(course.getName(), "Maths");
 	}
+	
 }

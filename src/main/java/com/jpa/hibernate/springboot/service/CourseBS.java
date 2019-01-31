@@ -1,5 +1,7 @@
 package com.jpa.hibernate.springboot.service;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
@@ -26,14 +28,23 @@ public class CourseBS implements CourseRepositoryBSI {
 	public Course saveOrUpdate(Course course) {
 		// It will update Person if Id matches otherwise it
 		// will insert the new Person.
-		em.merge(course);
+		if (course.getId() == null) {
+			em.persist(course);
+		} else {
+			em.merge(course);
+		}
 		return course;
 	}
 
 	@Override
-	public Course delete(long id) {
+	public Course deleteCourseById(long id) {
 		Course person = findById(id);
 		em.remove(person);
 		return person;
+	}
+
+	@Override
+	public List<Course> findAllCourses() {
+		return em.createNamedQuery("get_all_courses", Course.class).getResultList();
 	}
 }
