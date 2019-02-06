@@ -12,3 +12,16 @@ insert into Course(id,Name)
 values(1004,'IP');
 insert into Course(id,Name)
 values(1005,'History');
+
+--Inserting values in Student Table.
+
+insert into Student(id,Name)
+values(1001,'Atishay');
+insert into Student(id,Name)
+values(1002,'Joshua');
+insert into Student(id,Name)
+values(1003,'Barbie');
+insert into Student(id,Name)
+values(1004,'Ajinkya');
+insert into Student(id,Name)
+values(1005,'Amit');

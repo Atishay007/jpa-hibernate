@@ -16,25 +16,32 @@ import com.jpa.hibernate.springboot.service.CourseBS;
 @RestController
 public class CourseController {
 
+	// This shows when RestController is initialized
+	// All the beans or objects will be of Singleton.
+	private Course course = new Course();
+
 	@Autowired
 	private CourseBS courseBS;
 
 	@GetMapping("/courses")
 	public List<Course> getAllCourses() {
+		// Everytime same object will be printed
+		// This shows singleton property.
+		System.out.println(course);
 		return courseBS.findAllCourses();
 	}
 
-	@GetMapping("/course/{id}")
+	@GetMapping("/courses/{id}")
 	public Course getCourseById(@PathVariable long id) {
 		return courseBS.findById(id);
 	}
 
-	@PostMapping("/course")
+	@PostMapping("/courses")
 	public Course saveOrUpdateCourse(@RequestBody Course person) {
 		return courseBS.saveOrUpdate(person);
 	}
 
-	@DeleteMapping("/course/{id}")
+	@DeleteMapping("/courses/{id}")
 	public Course deleteCourseById(@PathVariable long id) {
 		return courseBS.deleteCourseById(id);
 	}

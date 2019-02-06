@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.jpa.hibernate.springboot.SpringBootStarter;
@@ -29,17 +30,18 @@ public class CourseRepositoryTest {
 	@Test
 	public void findById() {
 		LOGGER.info("Test Case Running");
-		Course course = courseBS.findById(1);
+		Course course = courseBS.findById(1001);
 		assertEquals(course.getName(), "Maths");
 	}
 
 	@Test
 	// Spring will reset the deleted data.
 	// So that other methods can use the data.
-	@DirtiesContext
+	@Rollback
+	// @DirtiestContext
 	public void deleteById() {
-		Course course = courseBS.deleteCourseById(1);
+		Course course = courseBS.deleteCourseById(1001);
 		assertEquals(course.getName(), "Maths");
 	}
-	
+
 }
