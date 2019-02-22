@@ -1,13 +1,19 @@
 version: 0.2
 
 phases:
-
+  install:
+    commands:
+      - echo Nothing to do in the install phase...
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn clean install -Dmaven.test.skip=true
   post_build:
     commands:
       - echo Build completed on `date`
-      - mvn clean install -Dmaven.test.skip=true
 artifacts:
   files:
-    - target/SpringBootExample-2.1.2.RELEASE.jar
-    - appspec.yml
-  discard-paths: yes
+    - target/messageUtil-1.0.jar
