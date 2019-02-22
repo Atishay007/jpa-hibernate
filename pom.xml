@@ -10,10 +10,11 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jpa.hibernate.springboot</groupId>
-	<artifactId>jpa-hibernate-springboot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>SpringBootExample</artifactId>
 	<name>com.jpa.practice</name>
-	<description>jpa hibernate springboot</description>
+	<description>Student-Course-App</description>
+	<!-- To make war app -->
+	<!-- <packaging>war</packaging> -->
 
 	<properties>
 		<java.version>1.8</java.version>

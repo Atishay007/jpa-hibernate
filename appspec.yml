@@ -1,0 +1,5 @@
+version: 0.0
+os: linux
+files:
+  - source: ./SpringBootExample-2.1.2.RELEASE.jar
+    destination: /tmp
