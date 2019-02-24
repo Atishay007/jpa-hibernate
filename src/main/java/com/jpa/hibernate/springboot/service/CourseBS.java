@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import com.jpa.hibernate.springboot.repository.CourseRepositoryBSI;
 @Transactional
 public class CourseBS implements CourseRepositoryBSI {
 
+	private static final Logger LOGGER=LoggerFactory.getLogger(CourseBS.class);
+			
 	// @PersistenceContext: We can use this annotation also.
 	@Autowired
 	private EntityManager em;

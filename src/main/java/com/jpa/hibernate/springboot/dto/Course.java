@@ -17,9 +17,8 @@ public class Course {
 		super();
 	}
 
-	public Course(Long id, String name) {
+	public Course(String name) {
 		super();
-		this.id = id;
 		this.name = name;
 	}
 
