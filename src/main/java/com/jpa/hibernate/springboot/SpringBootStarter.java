@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.jpa.hibernate.springboot.repository.CourseRepositoryBSI;
+import com.jpa.hibernate.springboot.repository.ReviewRepositoryBSI;
 import com.jpa.hibernate.springboot.repository.StudentRepositoryBSI;
 
 @SpringBootApplication
@@ -16,6 +17,9 @@ public class SpringBootStarter implements CommandLineRunner {
 
 	@Autowired
 	private CourseRepositoryBSI courseBS;
+	
+	@Autowired
+	private ReviewRepositoryBSI reviewBS;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootStarter.class, args);
@@ -24,8 +28,11 @@ public class SpringBootStarter implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// To call methods present Repository using BS..
-		studentBS.saveStudentWithPassPort();
-		studentBS.getStudentWithPassPort();
+/*		studentBS.saveStudentWithPassPort();
+		studentBS.getStudentWithPassPort();*/
+		
+		reviewBS.getAllReviewOfCourse(8002);
+		courseBS.getCourseReview(1002l);
 	}
 
 }

@@ -3,6 +3,7 @@ package com.jpa.hibernate.springboot.service;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
@@ -11,14 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jpa.hibernate.springboot.dto.Course;
+import com.jpa.hibernate.springboot.dto.Review;
 import com.jpa.hibernate.springboot.repository.CourseRepositoryBSI;
 
 @Service
 @Transactional
 public class CourseBS implements CourseRepositoryBSI {
 
-	private static final Logger LOGGER=LoggerFactory.getLogger(CourseBS.class);
-			
+	private static final Logger LOGGER = LoggerFactory.getLogger(CourseBS.class);
+
 	// @PersistenceContext: We can use this annotation also.
 	@Autowired
 	private EntityManager em;
@@ -42,13 +44,22 @@ public class CourseBS implements CourseRepositoryBSI {
 
 	@Override
 	public Course deleteCourseById(long id) {
-		Course person = findById(id);
-		em.remove(person);
-		return person;
+		Course course = findById(id);
+		em.remove(course);
+		return course;
 	}
 
 	@Override
 	public List<Course> findAllCourses() {
-		return em.createNamedQuery("get_all_courses", Course.class).getResultList();
+		TypedQuery<Course> tQuery = em.createNamedQuery("get_all_courses", Course.class);
+		return tQuery.getResultList();
 	}
+
+	@Override
+	public List<Review> getCourseReview(long courseId) {
+		List<Review> rev = findById(courseId).getReviews();
+		LOGGER.info("Review of CourseID " + courseId + " is -> {}", rev);
+		return rev;
+	}
+
 }

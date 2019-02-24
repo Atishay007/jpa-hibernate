@@ -2,8 +2,10 @@ package com.jpa.hibernate.springboot.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
@@ -11,6 +13,7 @@ public class Review {
 	private Long id;
 	private String description;
 	private String rating;
+	private Course course;
 
 	public Review() {
 		super();
@@ -49,5 +52,18 @@ public class Review {
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	public Course getCourse() {
+		return course;
+	}
 
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	@Override
+	public String toString() {
+		return "Review [id=" + id + ", description=" + description + ", rating=" + rating + "]";
+	}
 }

@@ -30,22 +30,22 @@ values(2001,'Atishay',4001);
 insert into Student(id,Name,passport_id)
 values(2002,'Joshua',4002);
 insert into Student(id,Name,passport_id)
-values(2003,'Ghnashyam',4003);
+values(2003,'Ghanshyam',4003);
 insert into Student(id,Name,passport_id)
 values(2004,'Ajinkya',4004);
 insert into Student(id,Name,passport_id)
 values(2005,'Amit',4005);
 
 --Inserting values in Review Table.
-insert into Review(id,Rating,Description)
-values(8001,'4','Good');
-insert into Review(id,Rating,Description)
-values(8002,'5','Good');
-insert into Review(id,Rating,Description)
-values(8003,'1','Good One, Keep it up');
-insert into Review(id,Rating,Description)
-values(8004,'3.8','Awesome');
-insert into Review(id,Rating,Description)
-values(8005,'4.6','Nice Videos');
+insert into Review(id,Rating,Description,course_id)
+values(8001,'4','Good',1001);
+insert into Review(id,Rating,Description,course_id)
+values(8002,'5','Awesome',1002);
+insert into Review(id,Rating,Description,course_id)
+values(8003,'1','Poor',1003);
+insert into Review(id,Rating,Description,course_id)
+values(8004,'3.8','Good',1002);
+insert into Review(id,Rating,Description,course_id)
+values(8005,'4.6','Awesome',1002);
 
 

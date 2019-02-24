@@ -1,10 +1,14 @@
 package com.jpa.hibernate.springboot.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQuery(name = "get_all_courses", query = "select c from Course c")
@@ -12,6 +16,7 @@ public class Course {
 
 	private Long id;
 	private String name;
+	private List<Review> reviews;
 
 	public Course() {
 		super();
@@ -41,4 +46,17 @@ public class Course {
 		this.name = name;
 	}
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", name=" + name + "]";
+	}
 }

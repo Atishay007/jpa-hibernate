@@ -63,5 +63,7 @@ public class CourseRepositoryTest {
 		// LazyInitialization error.
 		assertEquals(student.getPassport().getNumber(), "B47811QWER");
 	}
+	
+	
 
 }
