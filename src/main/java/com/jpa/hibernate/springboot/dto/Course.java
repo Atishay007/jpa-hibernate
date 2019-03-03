@@ -2,6 +2,7 @@ package com.jpa.hibernate.springboot.dto;
 
 import java.util.List;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,8 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @NamedQuery(name = "get_all_courses", query = "select c from Course c")
+@Cacheable
 public class Course {
 
 	private Long id;
@@ -46,6 +50,7 @@ public class Course {
 		this.name = name;
 	}
 
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
 	public List<Review> getReviews() {
 		return reviews;
