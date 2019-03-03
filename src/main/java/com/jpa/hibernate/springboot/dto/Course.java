@@ -50,6 +50,7 @@ public class Course {
 		this.name = name;
 	}
 
+	//To remove json recurrsion error.
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
 	public List<Review> getReviews() {
